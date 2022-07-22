@@ -240,12 +240,19 @@ mqtt_client.on('message', async function (topic, message)
         var nroInfo = json_parser['fld']['nI'];
         var touridx = json_parser['fld']['tid'];
         var infono = json_parser['fld']['inf'];
-        var fechaHora = json_parser['fld']['FH'];
+        var fechaHora = json_parser['fld']['FH'];        
         var GPSlat = json_parser['gps']['lat'];
         var GPSlng = json_parser['gps']['lng'];
         var Velocidad = json_parser['gps']['spd'];
         var Kilometros = json_parser['gps']['cd'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if (!GPSlat){
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var Velocidad = 0;
+          var Kilometros = json_parser['gps']['cd'];
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        }
         var tag = json_parser['tag'];
         if(globalTag!=tag)
         {
@@ -358,6 +365,13 @@ mqtt_client.on('message', async function (topic, message)
         var Velocidad = json_parser['gps']['spd'];
         var Kilometros = json_parser['gps']['cd'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if (!GPSlat){
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var Velocidad = 0;
+          var Kilometros = json_parser['gps']['cd'];
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        }
         var tag = json_parser['tag'];
         if(modem=="qt-008")
           Kilometros-=10420.2;
@@ -435,6 +449,13 @@ mqtt_client.on('message', async function (topic, message)
         var Velocidad = json_parser['gps']['spd'];
         var Kilometros = json_parser['gps']['cd'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if (!GPSlat){
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var Velocidad = 0;
+          var Kilometros = json_parser['gps']['cd'];
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        }
         var tag = json_parser['tag'];
         if(modem=="qt-008")
           Kilometros-=10420.2;
@@ -594,6 +615,13 @@ mqtt_client.on('message', async function (topic, message)
         var Velocidad = json_parser['gps']['spd'];
         var Kilometros = json_parser['gps']['cd'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if (!GPSlat){
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var Velocidad = 0;
+          var Kilometros = json_parser['gps']['cd'];
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        };
         var tag = json_parser['tag'];
         if(modem=="qt-008")
           Kilometros-=10420.2;
@@ -671,6 +699,13 @@ mqtt_client.on('message', async function (topic, message)
         var Velocidad = json_parser['gps']['spd'];
         var Kilometros = json_parser['gps']['cd'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if (!GPSlat){
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var Velocidad = 0;
+          var Kilometros = json_parser['gps']['cd'];
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        }
         var tag = json_parser['tag'];
         if(modem=="qt-008")
           Kilometros-=10420.2;
@@ -791,10 +826,15 @@ mqtt_client.on('message', async function (topic, message)
         var sd = json_parser['fld']['SD'];
         var q = json_parser['fld']['Q'];
         var gps = json_parser['fld']['GPS'];
-        var nro_resets = json_parser['fld']['RESETS'];   
+        var nro_resets = json_parser['fld']['RESETS'];
         var GPSlat = json_parser['gps']['lat'];
         var GPSlng = json_parser['gps']['lng'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if(!GPSlat) {
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        }       
         var tag = json_parser['tag'];
         if(sd=="1")
           sd="true";
@@ -887,6 +927,11 @@ mqtt_client.on('message', async function (topic, message)
         var GPSlat = json_parser['gps']['lat'];
         var GPSlng = json_parser['gps']['lng'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if(!GPSlat) {
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        } 
         var tag = json_parser['tag'];
         var query_param;
         if(globalTag!=tag)

@@ -228,7 +228,7 @@ mqtt_client.on('message', async function (topic, message)
       catch(err)
       {
         console.log(err);  
-      } 
+      }
       if (topic == "cliente1/info")
       {
         var modem = json_parser['md'];
@@ -241,6 +241,13 @@ mqtt_client.on('message', async function (topic, message)
         var Velocidad = json_parser['gps']['spd'];
         var Kilometros = json_parser['gps']['cd'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if (!GPSlat){
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var Velocidad = 0;
+          var Kilometros = json_parser['gps']['cd'];
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        }
         var tag = json_parser['tag'];
         if(modem=="qt-008")
           Kilometros-=10420.2;
@@ -251,8 +258,7 @@ mqtt_client.on('message', async function (topic, message)
         if(globalTag!=tag)
         {
           globalTag = tag;
-          //CREATEQUERY TO BRING INFO TEXT
-          
+          //CREATEQUERY TO BRING INFO TEXT          
           var queryInfo = "SELECT Infotexto FROM infoTable WHERE infono=" + infono + ";";
           try
           {  
@@ -271,7 +277,6 @@ mqtt_client.on('message', async function (topic, message)
                             query1 = "INSERT INTO `insoltechv11`.`info` (`modem`, `nroInfo`,`touridx`, `infono`, `FechaHora`,"+
                             " `tag`, `patente`) VALUES ('" + modem + "', '" + nroInfo + "', '"
                             + touridx + "', '" + texto +"', '" + fechaHora + "', '" + tag + "', '" + rx_patente +  "');";
-
                             //Se inserta fila gpspos con ícono de info
                             query2 = "";
                         }
@@ -362,6 +367,13 @@ mqtt_client.on('message', async function (topic, message)
           var Velocidad = json_parser['gps']['spd'];
           var Kilometros = json_parser['gps']['cd'];
           var gpsFechaHora = json_parser['gps']['gTm'];
+          if (!GPSlat){
+            var GPSlat = 0;
+            var GPSlng = 0;
+            var Velocidad = 0;
+            var Kilometros = json_parser['gps']['cd'];
+            var gpsFechaHora = "2021-01-01 08:00:00";
+          }
           var tag = json_parser['tag'];
         }
         else
@@ -383,6 +395,13 @@ mqtt_client.on('message', async function (topic, message)
           var Velocidad = json_parser['gps']['spd'];
           var Kilometros = json_parser['gps']['cd'];
           var gpsFechaHora = json_parser['gps']['gTm'];
+          if (!GPSlat){
+            var GPSlat = 0;
+            var GPSlng = 0;
+            var Velocidad = 0;
+            var Kilometros = json_parser['gps']['cd'];
+            var gpsFechaHora = "2021-01-01 08:00:00";
+          }
           var tag = json_parser['tag'];
         }
         if(modem=="qt-008")
@@ -463,6 +482,14 @@ mqtt_client.on('message', async function (topic, message)
           var Velocidad = json_parser['gps']['spd'];
           var Kilometros = json_parser['gps']['cd'];
           var gpsFechaHora = json_parser['gps']['gTm'];
+          if (!GPSlat){
+            var GPSlat = 0;
+            var GPSlng = 0;
+            var Velocidad = 0;
+            var Kilometros = json_parser['gps']['cd'];
+            var gpsFechaHora = "2021-01-01 08:00:00";
+          }
+          var gpsFechaHora = json_parser['gps']['gTm'];
           var tag = json_parser['tag'];
         }
         else
@@ -499,6 +526,13 @@ mqtt_client.on('message', async function (topic, message)
           var Velocidad = json_parser['gps']['spd'];
           var Kilometros = json_parser['gps']['cd'];
           var gpsFechaHora = json_parser['gps']['gTm'];
+          if (!GPSlat){
+            var GPSlat = 0;
+            var GPSlng = 0;
+            var Velocidad = 0;
+            var Kilometros = json_parser['gps']['cd'];
+            var gpsFechaHora = "2021-01-01 08:00:00";
+          }
           var tag = json_parser['tag'];
         }
         if(modem=="qt-008")
@@ -659,6 +693,13 @@ mqtt_client.on('message', async function (topic, message)
         var Velocidad = json_parser['gps']['spd'];
         var Kilometros = json_parser['gps']['cd'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if (!GPSlat){
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var Velocidad = 0;
+          var Kilometros = json_parser['gps']['cd'];
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        }
         var tag = json_parser['tag'];
         if(modem=="qt-008")
           Kilometros-=10420.2;
@@ -736,6 +777,13 @@ mqtt_client.on('message', async function (topic, message)
         var Velocidad = json_parser['gps']['spd'];
         var Kilometros = json_parser['gps']['cd'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if (!GPSlat){
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var Velocidad = 0;
+          var Kilometros = json_parser['gps']['cd'];
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        }
         var tag = json_parser['tag'];
         if(modem=="qt-008")
           Kilometros-=10420.2;
@@ -860,6 +908,11 @@ mqtt_client.on('message', async function (topic, message)
         var GPSlat = json_parser['gps']['lat'];
         var GPSlng = json_parser['gps']['lng'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if(!GPSlat) {
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        }  
         var tag = json_parser['tag'];
         if(sd=="1")
           sd="true";
@@ -952,6 +1005,11 @@ mqtt_client.on('message', async function (topic, message)
         var GPSlat = json_parser['gps']['lat'];
         var GPSlng = json_parser['gps']['lng'];
         var gpsFechaHora = json_parser['gps']['gTm'];
+        if(!GPSlat) {
+          var GPSlat = 0;
+          var GPSlng = 0;
+          var gpsFechaHora = "2021-01-01 08:00:00";
+        }
         var tag = json_parser['tag'];
         var query_param;
         if(globalTag!=tag)
